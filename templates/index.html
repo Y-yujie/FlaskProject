@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>胸腔X-ray肺炎检测系统设计与实现</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='jquery/jquery.3.6.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</head>
+
+<body>
+<header class="TouBu" id="top">
+    <div class="J1" align="center">
+        <a class="name" align="center">胸腔X-ray肺炎检测系统</a>
+    </div>
+</header>
+
+
+<div class="ZhongBu" id="middle">
+    <h2 align="center">预测结果展示</h2>
+
+    <div class="abstract" style="float: left;">
+        <p style="text-indent: 32.4px; font-size: 17px" >本系统旨在开发一种基于深度学习框架的系统，实现快速且准确地识别肺炎图像中的病灶数量，
+            辅助医生和专业医疗人员进行肺部疾病的诊断和治疗决策，及时对肺炎患者进行治疗，为患者赢得宝贵的治疗时间。该系统后端功能基于
+            <a href="https://flask.palletsprojects.com/en/2.3.x/"><cite>Flask </cite></a>框架部署实现，
+            主要包含三个模块:</p>
+
+        <ul style="color: DimGray">
+            <li>用户注册模块：用户注册界面包括邮箱、验证码、用户名、密码和确认密码五个字段。当我们把除验证码外的其它字段都填写完毕时，
+                点解获取验证码，我们通过<a href="https://www.geeksforgeeks.org/simple-mail-transfer-protocol-smtp/">
+                    <cite>smtp </cite></a>功能设置的邮箱服务器将给待注册邮箱发送一个随机验证码，正确输入即可保存到
+                <a href="https://www.mysql.com/"><cite>mysql </cite></a>数据库中，
+                即注册成功！</li>
+            <br>
+            <li>用户登录模块：用户登录界面包括邮箱和密码两个字段，输入后点击立即登录，将会与数据库中保存的邮箱和对应密码进行匹配，
+                匹配成功即可完成登录！</li>
+            <br>
+            <li>病灶预测模块：该模块可以实现从本地选择一张待预测胸腔X-ray上传到前端浏览器，并通过
+                <a href="https://baike.baidu.com/item/canvas/20449169"><cite>canvas </cite></a>显示出来，
+                然后点击显示预测结果按钮，即可将该X光片的预测病灶数量显示出来。</li>
+        </ul>
+    </div>
+
+    <div class="input" style="float: right;">
+        <div style="float: left">
+            <div class="shuru">
+                上传肺炎CT影像:<input type="file" id="file" name="file"/>
+            </div>
+            <canvas id="canvas" width="350" height="350"></canvas>
+        </div>
+
+
+        {#                用于显示预测结果#}
+        <div style=" padding: 15px">
+            <button id="acquire">显示预测结果</button>
+            <div id="searchResultContainer"></div>
+        </div>
+
+    </div>
+</div>
+
+
+<footer id="footer">
+    <div class="J2">
+        <div class="mes">
+            <p class="email">湖南科技大学</p>
+            <p class="email">设计者：杨雨洁</p>
+            <p class="email">联系方式：2498899860@qq.com</p>
+        </div>
+        <div class="btm">
+            <a class="" href="{{ url_for('static', filename='images/train.zip') }}" download><br>下载原数据文件</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
